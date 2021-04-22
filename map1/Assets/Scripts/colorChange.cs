@@ -18,15 +18,8 @@ public class colorChange : MonoBehaviour
     //let's just try getting the colors here
     private gameController game; 
 
- 
-
-    //private int temp = gameController.correctCount;
     private int where = 0; 
 
-    // void Awake()
-    // {
-    //     colorChange = Component.GetComponent<gameController>().normalColor;
-    // }
 
     void Start()
     {
@@ -34,9 +27,17 @@ public class colorChange : MonoBehaviour
         GetComponent<Renderer>().material.color = game.normalColor;
     }
 
+    void Update()
+    {
+        temp = gameController.correctCount;
+    }
+
     void OnMouseEnter()
     {
-        GetComponent<Renderer>().material.color = game.hoverColor;
+        if(where==0)
+        {
+            GetComponent<Renderer>().material.color = game.hoverColor;
+        }
     }
 
     void OnMouseDown()
@@ -50,7 +51,6 @@ public class colorChange : MonoBehaviour
         if(objUnderMe != null)
         {
             //(can just throw in random right spot for nonanswers if necessary)
-            //Array.IndexOf(arrayName, thingYoureLookingFor)
             if(isAnswer == true && Array.IndexOf(rightSpot, objUnderMe) > -1)
             {
                 GetComponent<Renderer>().material.color = game.correctColor;

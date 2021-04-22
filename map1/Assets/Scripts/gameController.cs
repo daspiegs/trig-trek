@@ -1,19 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class gameController : MonoBehaviour
 {
-    //bools if in correct place
-    public static int tanCorrect = 0;
-    public static int fivehunCorrect = 0;
-    public static int lengthCorrect = 0;
-    //p2
-    public static int tanvalCorrect = 0;
-    //p3
-    public static int threeOneCorrect = 0;
-    public static int threeTwoCorrect = 0;
-
     //
     public static gameController instance;
 
@@ -27,18 +18,16 @@ public class gameController : MonoBehaviour
     public Color correctColor; 
     public Color incorrectColor;
 
-///////
-    //int to measure if all correct
-    public static int correctCount = tanCorrect + fivehunCorrect + lengthCorrect + tanvalCorrect + threeOneCorrect + threeTwoCorrect;
+    //int to measure correct placements
+    public static int correctCount = 0;
 
     //event to broadcast
     public static int nextProblem = 0;
 
-    //stuff to dissapear
-    public GameObject[] dissapearObjects;
-    public GameObject[] appearObjects;
-    public GameObject[] dissBox;
-    public GameObject[] appearTwo;
+    //stuff to appear and dissapear
+    public GameObject[] problem1;
+    public GameObject[] problem2;
+    public GameObject[] problem3;
     public GameObject[] appearProbFour;
     public GameObject[] appearFinish;
 
@@ -50,19 +39,19 @@ public class gameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for(int i = 0; i < dissapearObjects.Length; i++ )
+        for(int i = 0; i < problem1.Length; i++ )
         {
-            dissapearObjects[i].SetActive(true);
+            problem1[i].SetActive(true);
         }
 
-        for(int i = 0; i < appearObjects.Length; i++ )
+        for(int i = 0; i < problem2.Length; i++ )
         {
-            appearObjects[i].SetActive(false);
+            problem2[i].SetActive(false);
         }
 
-        for(int i = 0; i < appearTwo.Length; i++ )
+        for(int i = 0; i < problem3.Length; i++ )
         {
-            appearTwo[i].SetActive(false);
+            problem3[i].SetActive(false);
         }
 
         for(int i = 0; i < appearProbFour.Length; i++ )
@@ -80,31 +69,21 @@ public class gameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(correctCount == 3 && nextProblem == 0 ) 
-
+        if(correctCount == 3 && nextProblem == 0)
         {
-            StartCoroutine(waitThenContinue());
+            print("p1donzos");
+            StartCoroutine(waitThenContinue(problem1, problem2));
+            nextProblem = 1;
         }
 
         if(correctCount == 4 && nextProblem == 1 ) 
         {
-            
+            print("p2donzos");
+            StartCoroutine(waitThenContinue(problem2, problem3));
             nextProblem = 2;
-
-            for(int i = 0; i < dissBox.Length; i++)
-            {
-                dissBox[i].SetActive(false);
-            }
-
-            for(int i = 0; i < appearTwo.Length; i++ )
-            {
-                appearTwo[i].SetActive(true);
-            }
-
-            print("meow");
         }
 
-        if(correctCount == 6 && nextProblem == 2) 
+        if(correctCount == 5 && nextProblem == 2) 
         {
             nextProblem = 3;
 
@@ -141,24 +120,22 @@ public class gameController : MonoBehaviour
 
     }
 
-    IEnumerator waitThenContinue()
+    IEnumerator waitThenContinue(GameObject[] bye, GameObject[] hi)
     {
         yield return new WaitForSeconds(1f);
 
-        nextProblem = 1;
-
-        for(int i = 0; i < dissapearObjects.Length; i++)
+        for(int i = 0; i < bye.Length; i++)
         {
-            dissapearObjects[i].SetActive(false);
+            bye[i].SetActive(false);
         }
 
-        for(int i = 0; i < appearObjects.Length; i++ )
+        for(int i = 0; i < hi.Length; i++ )
         {
-            appearObjects[i].SetActive(true);
+            hi[i].SetActive(true);
 
-            if(appearObjects[i].GetComponent<newdragdrop>() != null)
+            if(hi[i].GetComponent<dragdropobj>() != null)
             {
-                appearObjects[i].GetComponent<newdragdrop>().enabled = true;
+                hi[i].GetComponent<dragdropobj>().enabled = true;
             }
         }
     }
