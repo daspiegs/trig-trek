@@ -14,8 +14,18 @@ public class gameController : MonoBehaviour
     public static int threeOneCorrect = 0;
     public static int threeTwoCorrect = 0;
 
+    //
+    public static gameController instance;
+
     //final
     public static int estimateClicked = 0;
+
+    //color time
+    public Color hoverColor;
+    public Color normalColor = Color.white;
+    public Color clickColor;
+    public Color correctColor; 
+    public Color incorrectColor;
 
 ///////
     //int to measure if all correct
@@ -32,6 +42,11 @@ public class gameController : MonoBehaviour
     public GameObject[] appearProbFour;
     public GameObject[] appearFinish;
 
+    void Awake()
+    {
+        instance = this;
+    }
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -146,7 +161,5 @@ public class gameController : MonoBehaviour
                 appearObjects[i].GetComponent<newdragdrop>().enabled = true;
             }
         }
-        
-        print("boom");
     }
 }
