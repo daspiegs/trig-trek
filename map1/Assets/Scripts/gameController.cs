@@ -28,7 +28,8 @@ public class gameController : MonoBehaviour
     public GameObject[] problem1;
     public GameObject[] problem2;
     public GameObject[] problem3;
-    public GameObject[] appearProbFour;
+    public GameObject[] problem4;
+    public GameObject[] calculate;
     public GameObject[] appearFinish;
 
     void Awake()
@@ -54,9 +55,14 @@ public class gameController : MonoBehaviour
             problem3[i].SetActive(false);
         }
 
-        for(int i = 0; i < appearProbFour.Length; i++ )
+        for(int i = 0; i < problem4.Length; i++ )
         {
-            appearProbFour[i].SetActive(false);
+            problem4[i].SetActive(false);
+        }
+
+        for(int i = 0; i < calculate.Length; i++ )
+        {
+            calculate[i].SetActive(false);
         }
 
         for(int i = 0; i < appearFinish.Length; i++ )
@@ -85,41 +91,28 @@ public class gameController : MonoBehaviour
 
         if(correctCount == 5 && nextProblem == 2) 
         {
+            print("p3donzos");
+            StartCoroutine(waitThenContinue(problem3, problem4));
             nextProblem = 3;
-
-            print("quack");
-
-
-            for(int i = 0; i < appearProbFour.Length; i++ )
-            {
-                appearProbFour[i].SetActive(true);
-            }
         }
 
-        if(estimateClicked == 1 && nextProblem == 3)
+        if(correctCount == 6 && nextProblem == 3) 
         {
+            print("p4donzos");
+            StartCoroutine(waitThenContinue(problem4, calculate));
             nextProblem = 4;
-
-
-            for(int i = 0; i < appearProbFour.Length; i++)
-            {
-                if(appearProbFour[i].GetComponent<diswhenclick>() != null)
-                {
-                    appearProbFour[i].SetActive(false);
-                }
-            }
-
-            print("BOOYA");
-
-            for(int i = 0; i < appearFinish.Length; i++ )
-            {
-                appearFinish[i].SetActive(true);
-            }
         }
 
-
+        if(estimateClicked == 1 && nextProblem == 4)
+        {
+            print("calcdonzos");
+            StartCoroutine(waitThenContinue(calculate, appearFinish));
+            nextProblem = 5;
+            print("BOOYA");
+        }
     }
 
+//switch out problem stuff function
     IEnumerator waitThenContinue(GameObject[] bye, GameObject[] hi)
     {
         yield return new WaitForSeconds(1f);
