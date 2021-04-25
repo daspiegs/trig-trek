@@ -601,7 +601,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: -3.57, y: 1, z: -5.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -623,7 +623,7 @@ MonoBehaviour:
   sphere: {fileID: 655489641}
   cylinder: {fileID: 1523759067}
   cube: {fileID: 1371804889}
-  bearing: {fileID: 744588079}
+  bearingUI: {fileID: 744588079}
   speed: 5.03
 --- !u!1 &1106797515
 GameObject:
