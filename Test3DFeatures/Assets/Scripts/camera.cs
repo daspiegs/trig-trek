@@ -18,10 +18,10 @@ public class camera : MonoBehaviour
     public UnityEngine.UI.Text bearingUI;
     private float bearing;
     public float speed = 5;
-    private float sphereFromCyl = 84;
-    private float cubeFromCyl = 45;
-    private float sphereFromCub = 190;
-    private float cylFromCub = 225;
+    private float sphereFromCyl = 88;
+    private float cubeFromCyl = 46;
+    private float sphereFromCub = 194;
+    private float cylFromCub = 226;
     private string loc = "cylinder";
     private string[] locs = { "cube", "cylinder" };
     private bool lockTurning;
@@ -90,7 +90,7 @@ public class camera : MonoBehaviour
         }
 
         // display bearing
-        bearingUI.text = bearing.ToString();
+        bearingUI.text = "Bearing: " + bearing.ToString();
     }
 
     private void lockTurn()
