@@ -21,7 +21,7 @@ public class MainManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (angle3done && angle2done && dist3done && dist2done)
+        if (angle3done && angle2done && (dist3done || dist2done))
         {
             AllDone.SetActive(true);
             AllDone2.SetActive(true);
