@@ -8,5 +8,6 @@ public class estClick : MonoBehaviour
     public void OnMouseDown()
     {
         gameController.estimateClicked = 1;
+        print("clickedCalc");
     }
 }
