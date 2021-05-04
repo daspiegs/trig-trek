@@ -3806,7 +3806,7 @@ GameObject:
   - component: {fileID: 909296541}
   - component: {fileID: 909296540}
   m_Layer: 5
-  m_Name: Debug Canvas
+  m_Name: Slide Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
