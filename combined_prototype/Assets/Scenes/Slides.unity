@@ -259,6 +259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slide1: {fileID: 21300000, guid: 13294830dffa65d45a14ec4a911e0905, type: 3}
   slide2: {fileID: 21300000, guid: 440cdc0e475c0ba43aacc2753d2a0d98, type: 3}
+  slide3: {fileID: 21300000, guid: 97a2e989fef48094aa82050b1363d0c5, type: 3}
   slideButton: {fileID: 236746586}
   imgNumberCount: 0
 --- !u!114 &236746589

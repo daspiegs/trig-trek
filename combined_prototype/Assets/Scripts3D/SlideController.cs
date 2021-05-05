@@ -20,6 +20,7 @@ public class SlideController : MonoBehaviour
 
     public Sprite slide1; // I attched these from editor
     public Sprite slide2;
+    public Sprite slide3;
     public GameObject slideButton;
 
     public int imgNumberCount;
@@ -37,6 +38,10 @@ public class SlideController : MonoBehaviour
                 imgNumberCount++;
                 break;
             case 2:
+                GetComponent<Image>().sprite = slide3;
+                imgNumberCount++;
+                break;
+            case 3:
                 slideButton.SetActive(false);
                 UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
                 break;
